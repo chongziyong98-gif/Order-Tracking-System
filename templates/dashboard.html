@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Order Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}" />
+  </head>
+  <body data-page="dashboard">
+    <header class="hero">
+      <div class="hero__content">
+        <p class="eyebrow">Order Tracking System</p>
+        <h1>Dashboard</h1>
+        <p class="sub">Clear status view for every order in motion.</p>
+      </div>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="{{ url_for('create_order_page') }}">Create Order</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Filters</h2>
+        </div>
+        <div class="panel__body filters">
+          <label>
+            Year
+            <input type="number" id="filter-year" min="2000" max="2099" />
+          </label>
+          <label>
+            Month
+            <input type="number" id="filter-month" min="1" max="12" />
+          </label>
+          <label>
+            Status
+            <select id="filter-status">
+              <option value="">All</option>
+              <option value="Preparing">Preparing</option>
+              <option value="Delivering">Delivering</option>
+              <option value="Completed">Completed</option>
+              <option value="Canceled">Canceled</option>
+            </select>
+          </label>
+          <button class="btn btn--ghost" id="apply-filter">Apply</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Order Status</h2>
+          <span class="badge" id="order-count">0</span>
+        </div>
+        <div class="panel__body">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Issue Date</th>
+                  <th>JO Number</th>
+                  <th>Client PO</th>
+                  <th>Client Name</th>
+                  <th>Required Date</th>
+                  <th>DO Supplier</th>
+                  <th>DO Client</th>
+                  <th>Status</th>
+                  <th>Complete Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="order-rows"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>

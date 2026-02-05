@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Create Order</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}" />
+  </head>
+  <body data-page="create-order">
+    <header class="hero">
+      <div class="hero__content">
+        <p class="eyebrow">New Order</p>
+        <h1>Create Order</h1>
+        <p class="sub">One input, consistent records across every file.</p>
+      </div>
+      <div class="hero__actions">
+        <a class="btn btn--ghost" href="{{ url_for('dashboard_page') }}">Back to Dashboard</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Client</h2>
+        </div>
+        <div class="panel__body grid">
+          <label>
+            Client Code
+            <input id="client-code" placeholder="C001" />
+          </label>
+          <label>
+            Client Name (override if needed)
+            <input id="client-name" placeholder="Auto from masterlist" />
+          </label>
+          <label>
+            Delivery Address
+            <input id="client-address" placeholder="Auto from masterlist" disabled />
+          </label>
+          <label>
+            Client PIC
+            <input id="client-pic" placeholder="Auto from masterlist" disabled />
+          </label>
+          <label>
+            Client Contact
+            <input id="client-contact" placeholder="Auto from masterlist" disabled />
+          </label>
+          <label>
+            Required Date
+            <input id="required-date" type="date" />
+          </label>
+          <label>
+            Local / Export
+            <select id="local-export">
+              <option value="">Select</option>
+              <option value="Local">Local</option>
+              <option value="Export">Export</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Client PO List</h2>
+          <button class="btn btn--ghost" id="add-po">Add PO</button>
+        </div>
+        <div class="panel__body" id="po-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Items</h2>
+          <button class="btn btn--ghost" id="add-item">Add Item</button>
+        </div>
+        <div class="panel__body">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Item Code</th>
+                  <th>Description</th>
+                  <th>Width</th>
+                  <th>Length</th>
+                  <th>Qty</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="item-rows"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Supplier DO List</h2>
+          <button class="btn btn--ghost" id="add-supplier-do">Add DO</button>
+        </div>
+        <div class="panel__body" id="supplier-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Remark</h2>
+        </div>
+        <div class="panel__body">
+          <textarea id="remark" rows="3" placeholder="Optional"></textarea>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Actions</h2>
+        </div>
+        <div class="panel__body actions">
+          <button class="btn btn--primary" id="save-draft">Save Draft</button>
+          <button class="btn btn--ghost" id="confirm-order">Confirm Order</button>
+          <div class="notice" id="result-box"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>

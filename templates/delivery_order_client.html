@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Delivery Order</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}" />
+  </head>
+  <body data-page="delivery-order">
+    <header class="hero">
+      <div class="hero__content">
+        <p class="eyebrow">Delivery Order</p>
+        <h1 id="do-title">DO</h1>
+        <p class="sub">Auto-filled from the confirmed order snapshot.</p>
+      </div>
+      <div class="hero__actions">
+        <a class="btn btn--ghost" href="{{ url_for('dashboard_page') }}">Back to Dashboard</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Client Info</h2>
+        </div>
+        <div class="panel__body grid" id="client-info"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Items</h2>
+        </div>
+        <div class="panel__body">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Item Code</th>
+                  <th>Description</th>
+                  <th>Width</th>
+                  <th>Length</th>
+                  <th>Qty</th>
+                </tr>
+              </thead>
+              <tbody id="do-items"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Remark</h2>
+        </div>
+        <div class="panel__body">
+          <div class="notice" id="do-remark"></div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      window.DO_NUMBER = "{{ do_number }}";
+    </script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
